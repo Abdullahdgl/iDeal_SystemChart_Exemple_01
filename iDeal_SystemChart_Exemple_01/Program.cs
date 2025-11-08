@@ -16,16 +16,20 @@ namespace iDeal_SystemChart_Exemple_01
         void ideal_systemchart_exemple_01(ideal.cxSistem Sistem)
         {
 
+
+
+
 			var V = Sistem.GrafikVerileri;
-			var RSI = Sistem.RSI(14);
+			var RSI = Sistem.RSI(30);
+			var MOM = Sistem.Momentum(120);
 
 			var SonYon = "";
 			var Sinyal = "";
 
 			for (int i = 100; i < V.Count; i++)
 			{
-				if (RSI[i] > 55) Sinyal = "A";
-				if (RSI[i] < 45) Sinyal = "S";
+				if (RSI[i] > 55 && MOM[i] > 100) Sinyal = "A";
+				if (RSI[i] < 45 && MOM[i] < 100) Sinyal = "S";
 				if (Sinyal != "" && SonYon != Sinyal)
 				{
 					Sistem.Yon[i] = Sinyal;
@@ -34,10 +38,10 @@ namespace iDeal_SystemChart_Exemple_01
 				}
 
 			}
-			Sistem.GetiriHesapla("01/01/2024", 0.0);
-			Sistem.Cizgiler[0].Deger = RSI;
-			Sistem.Cizgiler[1].Deger = Sistem.GetiriKZ;
-			Sistem.Cizgiler[2].Deger = Sistem.GetiriKZGun;
+			Sistem.GetiriHesapla("01/01/2000", 0);
+			Sistem.Cizgiler[0].Deger = Sistem.GetiriKZ;
+			Sistem.ZeminYazisiEkle("Toplam = ", 2, 30, 20, Color.Red, "Tahoma", 25);
+			Sistem.ZeminYazisiEkle(Sistem.GetiriToplamIslem.ToString(), 2, 230, 20, Color.Aqua, "Tahoma", 25);
 
 
 
