@@ -17,14 +17,14 @@ namespace iDeal_SystemChart_Exemple_01
         {
 
 			/*	bu örnek 50 günlük haraketli ortalama 200 günlük hareketli ortalamayı yukarı yönlü kırarsa AL,
-			 *	Aşağı yönlü kırarsa sat koşullarını uygular laki, eğer burda izleyen stop ve son fiyat bilgisi %1 yukarı yönlüyse stopla veya kar al aslında bir nevi seviyeli izleyen stopa örnek bir kurgu içermektedir.
+			 *	Aşağı yönlü kırarsa sat koşullarını uygular lakin, eğer burda izleyen stop ve son fiyat bilgisi %1 yukarı yönlüyse stopla veya kar al aslında bir nevi seviyeli izleyen stopa örnek bir kurgu içermektedir.
 			 */
 
 
 			var V = Sistem.GrafikVerileri;
 			var C = Sistem.GrafikFiyatSec("Kapanis");
 			var EMA50 = Sistem.MA(C, "Exp", 50);
-			var EMA200 = Sistem.MA(C, "Exp", 200);
+	var EMA200 = Sistem.MA(C, "Exp", 200);			
 
 			var SonYon = "";
 			var Sinyal = "";
